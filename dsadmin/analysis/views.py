@@ -8,7 +8,6 @@ from rest_framework.reverse import reverse
 from rest_framework.views import APIView
 from django.core.serializers.json import DjangoJSONEncoder
 from django.views.decorators.csrf import csrf_exempt
-# from .serializers import MedSurveySerializer, SleepSurveySerializer
 import datetime, time, json
 import services
 
@@ -18,5 +17,12 @@ import services
 def donations(request, year):
 
 	response_data = services.get_donation_by_year(year)
+
+	return HttpResponse(json.dumps(response_data, cls=DjangoJSONEncoder), status=200, content_type="application/json")
+
+@csrf_exempt
+def target(request, year):
+
+	response_data = services.get_donation_target_by_year(year)
 
 	return HttpResponse(json.dumps(response_data, cls=DjangoJSONEncoder), status=200, content_type="application/json")
