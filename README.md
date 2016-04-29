@@ -6,6 +6,8 @@ This is a API service for DaySpring Admin Dashboard.
 
 1. Get donation amounts in months by given year
 
+| | |
+|-|-|
 | **URL** | /api/analysis/donations?year=:year |
 | **Method** | GET |
 | **URL Params** | **Required**: <br> `year=[integer]` <br> example: year=2015 |
