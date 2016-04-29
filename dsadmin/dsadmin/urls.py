@@ -22,7 +22,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^analysis/', include('analysis.urls')),
+    url(r'^api/analysis/', include('analysis.urls')),
     url(r'^markdown/', include('django_markdown.urls')),
 ]
 
