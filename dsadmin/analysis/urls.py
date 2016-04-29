@@ -4,5 +4,7 @@ from . import views
 
 urlpatterns = [
 
-   	url(r'^donations$', views.donations, name="donations"),
+   	url(r'^donations/([0-9]{4})/$', views.donations, name="donations"),
+
+   	# url(r'^donations/(?P<year>=[0-9]+)/$', views.donations, name="donations"),
 ]
