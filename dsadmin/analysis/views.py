@@ -14,23 +14,26 @@ import services
 # Create your views here.
 
 @csrf_exempt
-def donations(request, year):
+def donations(request):
 
+	year = request.GET['year']
 	response_data = services.get_donation_by_year(year)
 
 	return HttpResponse(json.dumps(response_data, cls=DjangoJSONEncoder), status=200, content_type="application/json")
 
 @csrf_exempt
-def target(request, year):
+def target(request):
 
+	year = request.GET['year']
 	response_data = services.get_donation_target_by_year(year)
 
 	return HttpResponse(json.dumps(response_data, cls=DjangoJSONEncoder), status=200, content_type="application/json")
 
 @csrf_exempt
-def test(request, year, month):
+def donors_inactive(request):
 
-	print month
+	unit = request.GET['unit']
+	value = request.GET['value']
 
 	response_data = services.get_donation_target_by_year(year)
 
