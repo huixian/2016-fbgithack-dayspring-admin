@@ -81,7 +81,7 @@ def get_lapsed_donors(unit, value):
                 donation_date = datetime.strptime(donation['DonationDate'], date_format)
                 if detail['LastDonationDate']:
                     last_donate_time = datetime.strptime(detail['LastDonationDate'], date_format)
-                    if donation_date < last_donate_time:
+                    if donation_date > last_donate_time:
                         detail['LastDonationDate'] = donation_date.strftime(date_format)
                         detail['Lapsed'] = __convert_unit_from_days((now - donation_date).days, unit)
                 else:
