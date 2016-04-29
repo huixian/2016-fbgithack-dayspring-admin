@@ -17,6 +17,12 @@ import services
 def donations(request):
 
 	year = request.GET['year']
+
+	try:
+		year = int(year)
+	except Exception as e:
+		return HttpResponse(0, status=500, content_type="application/json")
+
 	response_data = services.get_donation_by_year(year)
 
 	return HttpResponse(json.dumps(response_data, cls=DjangoJSONEncoder), status=200, content_type="application/json")
@@ -25,6 +31,12 @@ def donations(request):
 def target(request):
 
 	year = request.GET['year']
+
+	try:
+		year = int(year)
+	except Exception as e:
+		return HttpResponse(0, status=500, content_type="application/json")
+
 	response_data = services.get_donation_target_by_year(year)
 
 	return HttpResponse(json.dumps(response_data, cls=DjangoJSONEncoder), status=200, content_type="application/json")
@@ -32,9 +44,35 @@ def target(request):
 @csrf_exempt
 def donors_inactive(request):
 
+	unit_list = ['days', 'weeks', 'months', 'years']
+
 	unit = request.GET['unit']
 	value = request.GET['value']
 
-	response_data = services.get_donation_target_by_year(year)
+	if not (unit in unit_list):
+		return HttpResponse(0, status=500, content_type="application/json")
+
+	try:
+		value = int(value)
+	except Exception as e:
+		return HttpResponse(0, status=500, content_type="application/json")
+
+@csrf_exempt
+def donors_top(request):
+
+	year = request.GET['year']
+	num = request.GET['num']
+
+	try:
+		year = int(year)
+	except Exception as e:
+		return HttpResponse(0, status=500, content_type="application/json")
+
+	try:
+		num = int(num)
+	except Exception as e:
+		return HttpResponse(0, status=500, content_type="application/json")
+
+	response_data = services.get_top_donor_list_by_year(year, num)
 
 	return HttpResponse(json.dumps(response_data, cls=DjangoJSONEncoder), status=200, content_type="application/json")

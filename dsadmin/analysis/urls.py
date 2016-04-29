@@ -9,4 +9,6 @@ urlpatterns = [
 
 	url(r'^donors/inactive/$', views.donors_inactive, name="donors_inactive"),
 
+	url(r'^donors/top/$', views.donors_top, name="donors_top"),
+
 ]
