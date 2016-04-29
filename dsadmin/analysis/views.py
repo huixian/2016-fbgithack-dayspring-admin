@@ -57,6 +57,9 @@ def donors_inactive(request):
 	except Exception as e:
 		return HttpResponse(0, status=500, content_type="application/json")
 
+	response_data = services.get_lapsed_donors(unit, value)
+	return HttpResponse(json.dumps(response_data, cls=DjangoJSONEncoder), status=200, content_type="application/json")
+
 @csrf_exempt
 def donors_top(request):
 
