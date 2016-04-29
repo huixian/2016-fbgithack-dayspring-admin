@@ -9,4 +9,13 @@ from rest_framework.views import APIView
 # from .serializers import MedSurveySerializer, SleepSurveySerializer
 import datetime, time
 
+
 # Create your views here.
+
+def donations(request):
+
+	print("test")
+
+	output = 1
+
+	return HttpResponse(output)
