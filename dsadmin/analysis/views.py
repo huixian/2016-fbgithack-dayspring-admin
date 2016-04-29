@@ -26,3 +26,12 @@ def target(request, year):
 	response_data = services.get_donation_target_by_year(year)
 
 	return HttpResponse(json.dumps(response_data, cls=DjangoJSONEncoder), status=200, content_type="application/json")
+
+@csrf_exempt
+def test(request, year, month):
+
+	print month
+
+	response_data = services.get_donation_target_by_year(year)
+
+	return HttpResponse(json.dumps(response_data, cls=DjangoJSONEncoder), status=200, content_type="application/json")
