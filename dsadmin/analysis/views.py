@@ -14,6 +14,7 @@ import services
 
 # Create your views here.
 
+@csrf_exempt
 def donations(request, year):
 
 	response_data = services.get_donation_by_year(year)
