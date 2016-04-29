@@ -7,11 +7,11 @@ def get_donation_by_year(year):
     months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
     donations = []
     for month, month_name in enumerate(months):
-        total_amt = get_donation_by_year_month(year, month)
+        total_amt = __get_donation_by_year_month(year, month)
         donations.append({"MonthName":month_name,"Total":total_amt})
     return donations
 
-def get_donation_by_year_month(year, month):
+def __get_donation_by_year_month(year, month):
     payload = {'year':year, 'month':month}
     total_amt = 0
     if payload:
